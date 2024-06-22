@@ -1,0 +1,316 @@
+.intro-section {
+    text-align: center;
+    color: #411C8C;
+    padding: 20px;
+}
+
+.container {
+    background-color: #F8F9FD;
+    padding: 1rem;
+}
+
+.order-content {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    font-family: 'Nunito', sans-serif;
+}
+
+.product-header {
+    color: #0099ff;
+}
+
+.form-control:focus {
+    border-color: #DC0C7F;
+}
+
+.product-order {
+    color: #0099ff;
+    font-family: 'Nunito', sans-serif;
+}
+
+table {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    border-collapse: separate;
+    border: 1px solid #e8e8e8;
+    border-spacing: 0;
+    background-color: #F4F7FC;
+    box-shadow: 5px 5px 11px #bababa,
+        -5px -5px 11px #ffffff;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+.product-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.product-name {
+    color: black;
+    font-weight: 600;
+    margin-right: 10px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.btn-gradien {
+    background: linear-gradient(to right, #E3207E, #411C8C);
+    color: white;
+    border-radius: 30px;
+    width: 200px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input__email {
+    width: 90%;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    box-shadow: 0 0 0 1px #9f9f9f;
+    border: none;
+    border-radius: 20px;
+    background-color: #F4F7FC;
+}
+
+.input__email::placeholder {
+    color: #9f9f9f;
+}
+
+.input__email:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #0099ff;
+    border: none;
+}
+
+.receiver {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+.custom-hr {
+    border: none;
+    border-top: 1px solid #2d3748;
+    width: 100%;
+}
+
+.container-coupon {
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    border-collapse: separate;
+    border: 1px solid #e8e8e8;
+    border-spacing: 0;
+    background-color: #F4F7FC;
+    box-shadow: 5px 5px 11px #bababa,
+        -5px -5px 11px #ffffff;
+}
+
+.container__coupon {
+    display: flex;
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    gap: 10px;
+    /* Khoảng cách giữa input và button */
+}
+
+.input__coupon {
+    width: 400px;
+    flex: 1;
+    /* Để input chiếm toàn bộ không gian còn lại */
+    padding: 10px 18px;
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    box-shadow: 0 0 0 1px #9f9f9f;
+    border: none;
+    border-radius: 20px;
+    background-color: #F4F7FC;
+}
+
+.input__coupon::placeholder {
+    color: #9f9f9f;
+}
+
+.input__coupon:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #0099ff;
+    border: none;
+}
+
+.button {
+    background-color: #4299e1;
+    white-space: nowrap;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.75rem;
+    /* Tailwind text-xs */
+    font-weight: bold;
+    text-transform: uppercase;
+    border: #ffffff;
+    border-radius: 2rem;
+    /* Tailwind rounded-lg */
+    box-shadow: 0 4px 6px rgba(66, 153, 225, 0.2);
+    /* Tailwind shadow-md */
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.button:hover {
+    box-shadow: 0 8px 10px rgba(66, 153, 225, 0.4);
+    /* Tailwind hover:shadow-lg */
+}
+
+.button:focus,
+.button:active {
+    opacity: 0.85;
+    box-shadow: none;
+}
+
+.button:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.container__checkout {
+    display: grid;
+    grid-template-columns: 300px auto;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.container__checkout span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.container__receiver {
+    background: white radial-gradient(#218be2, transparent 10%);
+    background-size: 11px 11px;
+    padding-top: 10px;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.card {
+    position: relative;
+    width: 150px;
+    height: 60px;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.input {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    appearance: none;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.input+.check::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #d0d0d0;
+    border-radius: 50%;
+    background-color: #E8E8E8;
+}
+
+.input:checked+.check::after {
+    content: '';
+    position: absolute;
+    top: 19px;
+    right: 19px;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 0, 0, 0.7);
+    border-radius: 50%;
+}
+
+.input[value="standart"]:checked+.check::after {
+    background-color: rgba(255, 165, 0, 0.7);
+}
+
+.input[value="premium"]:checked+.check::after {
+    background-color: rgba(0, 128, 0, 0.7);
+}
+
+.input[value="basic"]:checked {
+    border: 1.5px solid rgba(255, 0, 0, 0.7);
+}
+
+.input[value="standart"]:checked {
+    border: 1.5px solid rgba(255, 165, 0, 0.7);
+}
+
+.input[value="premium"]:checked {
+    border: 1.5px solid rgba(0, 128, 0, 0.7);
+}
+
+.label {
+    color: #323232;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+.label .title {
+    margin: 10px 0 0 15px;
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.label .price {
+    margin: 0 0 0 15px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+}
+
+.label .span {
+    color: gray;
+    font-weight: 700;
+    font-size: 13px;
+    font-family: 'Nunito', sans-serif;
+}

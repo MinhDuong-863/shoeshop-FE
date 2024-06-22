@@ -1,0 +1,271 @@
+.intro-section {
+    text-align: center;
+    color: #411C8C;
+    padding: 20px;
+}
+
+.container {
+    background-color: #F8F9FD;
+    padding: 1rem;
+}
+
+.detail-content {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.link-product {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    display: flex;
+}
+
+.link {
+    color: #2d3748;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.blur-text {
+    opacity: 0.5;
+    margin-right: 10px;
+}
+
+.product-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.thumbnail-container {
+    display: flex;
+    justify-content: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.thumbnail-item {
+    width: 120px;
+    height: 120px;
+    margin-right: 10px;
+}
+
+.thumbnail-item:last-child {
+    margin-right: 0;
+}
+
+.thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.thumbnail-item.active {
+    border: 2px solid black;
+    border-radius: 11px;
+}
+
+.product-detail {
+    padding: 10px;
+}
+
+.product-name {
+    color: #2d3748;
+    font-family: 'Nunito', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.375;
+}
+
+.product-description {
+    color: #2d3748;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.product-action {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.product-action button {
+    margin-right: 10px;
+}
+
+.product-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.product-quantity button {
+    background-color: transparent;
+    border: none;
+    color: #411C8C;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.product-quantity input {
+    background-color: transparent;
+    border: none;
+    color: #411C8C;
+    font-size: 16px;
+    text-align: center;
+    width: 40px;
+    margin: 0 10px;
+}
+
+.product-quantity input:focus {
+    outline: none;
+}
+
+.product-rating {
+    color: #ffa622;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.wishlist-icon {
+    color: #f97777;
+    margin-right: 10px;
+}
+
+.boldtext {
+    font-weight: 550;
+    font-family: 'Nunito', sans-serif;
+}
+
+.pricetext {
+    font-size: 25px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+}
+
+.pricetext-discount {
+    font-size: 25px;
+    font-family: 'Oswald', sans-serif;
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.custom-hr {
+    border: none;
+    /* Loại bỏ đường viền mặc định */
+    border-top: 2px solid #2d3748;
+    /* Tạo đường viền trên */
+    width: 100%;
+    /* Chiều rộng của đường gạch ngang */
+    margin: 20px auto;
+    /* Căn giữa và thêm khoảng cách trên dưới */
+}
+
+.color-container {}
+
+.boxcolor {
+    font-size: 40px;
+    margin-right: 10px;
+}
+
+.boxcolor.activebox {
+    border: 2px solid white;
+    border-radius: 11px;
+}
+
+.button-cart {
+    background-color: white;
+    /* Tailwind bg-blue-500 */
+    color: #4299e1;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.75rem;
+    /* Tailwind text-xs */
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid #4299e1;
+    border-radius: 0.5rem;
+    /* Tailwind rounded-lg */
+    box-shadow: 0 4px 6px rgba(66, 153, 225, 0.2);
+    /* Tailwind shadow-md */
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.button-cart:hover {
+    box-shadow: 0 8px 10px rgba(66, 153, 225, 0.4);
+    /* Tailwind hover:shadow-lg */
+}
+
+.button-cart:focus,
+.button-cart:active {
+    opacity: 0.85;
+    box-shadow: none;
+}
+
+.button-cart:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.button {
+    background-color: #4299e1;
+    /* Tailwind bg-blue-500 */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.75rem;
+    /* Tailwind text-xs */
+    font-weight: bold;
+    text-transform: uppercase;
+    border: #ffffff;
+    border-radius: 0.5rem;
+    /* Tailwind rounded-lg */
+    box-shadow: 0 4px 6px rgba(66, 153, 225, 0.2);
+    /* Tailwind shadow-md */
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.button:hover {
+    box-shadow: 0 8px 10px rgba(66, 153, 225, 0.4);
+    /* Tailwind hover:shadow-lg */
+}
+
+.button:focus,
+.button:active {
+    opacity: 0.85;
+    box-shadow: none;
+}
+
+.button:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.button-plus {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    box-shadow:  5px 5px 10px #c5c5c5,
+             -5px -5px 10px #fbfbfb;
+}
+.button-plus:hover{
+    box-shadow:  5px 5px 9px #969696,
+             -5px -5px 9px #ffffff;
+}

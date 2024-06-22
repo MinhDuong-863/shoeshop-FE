@@ -1,0 +1,157 @@
+.login-form {
+    width: 100%;
+    max-width: 450px;
+    background: #F8F9FD;
+    background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%);
+    border-radius: 40px;
+    padding: 30px 35px;
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+    margin: 20px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-header {
+    text-align: center;
+    font-weight: 900;
+    font-size: 30px;
+    color: rgb(16, 137, 211);
+}
+
+.form-control {
+    width: 100%;
+    background: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 40px;
+    margin-top: 20px;
+    box-shadow: #cff0ff 0px 10px 10px -5px;
+    border-inline: 2px solid transparent;
+}
+
+.divider-nospace {
+    border-top: 1px solid #0099ff;
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 60%;
+    right: 10px;
+    color: #DC0C7F;
+    cursor: pointer;
+}
+
+.checkbox-text {
+    color: #DC0C7F;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.checkbox-text input[type="checkbox"]:checked {
+    border-color: #DC0C7F;
+    background-color: #DC0C7F;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 15px;
+    color: #0099ff;
+    text-decoration: none;
+}
+
+.register-link {
+    color: #0099ff;
+}
+
+.access-right {
+    margin-top: 20px;
+    width: 200px;
+    color: black;
+}
+
+.access-right:focus {
+    //border: 1px solid #0099ff;
+}
+
+.login-button {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
+    color: white;
+    padding-block: 15px;
+    margin: 20px auto;
+    margin-top: 30px;
+    border-radius: 40px;
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.divider {
+    height: 1px;
+    background-color: #0099ff;
+    margin: 20px;
+}
+
+.form-check label {
+    margin-left: 10px;
+}
+
+.social-account-container {
+    margin-top: 25px;
+}
+
+.social-account-container .title {
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    color: rgb(170, 170, 170);
+}
+
+.social-account-container .social-accounts {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.social-account-container .social-accounts .social-button {
+    border: 5px solid white;
+    padding: 5px;
+    border-radius: 50%;
+    width: 50px;
+    aspect-ratio: 1;
+    display: grid;
+    place-content: center;
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 12px 10px -8px;
+    transition: all 0.2s ease-in-out;
+}
+
+.social-account-container .social-accounts .social-button .svg {
+    fill: white;
+    margin: auto;
+}
+
+.social-account-container .social-accounts .social-button:hover {
+    transform: scale(1.2);
+}
+
+.social-account-container .social-accounts .social-button:active {
+    transform: scale(0.9);
+}
