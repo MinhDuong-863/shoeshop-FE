@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { RegisterDTO } from '../dtos/resgister.dto';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,7 @@ export class RegisterComponent {
   isPasswordVisible: boolean;
   isRetypePasswordVisible: boolean;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private router: Router, private userService: UserService) {
     this.phone = '';
     this.password = '';
     this.retypepassword = '';
@@ -34,8 +35,7 @@ export class RegisterComponent {
     this.district = '';
     this.commune = '';
     this.street = '';
-    this.dob = new Date();
-    this.dob.setFullYear(this.dob.getFullYear() - 18)
+    this.dob = null;
     this.gender = -1;
     this.isAccepted = false;
     this.isPasswordVisible = false;
@@ -54,8 +54,8 @@ export class RegisterComponent {
       + `isAccepted: ${this.isAccepted}`;
     //alert(message);
 
-    const apiUrl = "localhost:8088/api/v1/users/register";
-    const registerData = {
+    
+    const registerDTO: RegisterDTO = {
       "fullname": this.fullname,
       "phone_number": this.phone,
       "address": this.street + ", " + this.commune + ", " + this.district + ", " + this.province,
@@ -67,27 +67,20 @@ export class RegisterComponent {
       "google_account_id": 0,
       "role_id": 2
     }
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post(apiUrl, registerData, { headers })
-      .subscribe({
-        next: (response: any) => {
-          debugger
-          // Xử lý kết quả trả về khi đăng ký thành công
-          if (response && (response.status === 200 || response.status === 201)) {
-            // Đăng ký thành công, chuyển sang màn hình login
-            this.router.navigate(['/login']);
-          } else {
-            // Xử lý trường hợp đăng ký không thành công nếu cần
-          }
-        }, complete: () => {
-          debugger
-        },
-        error: (error: any) => {
-          // Xử lý lỗi nếu có
-          debugger
-          console.error('Đăng ký không thành công:', error);
-        }
-      });
+    
+    this.userService.register(registerDTO).subscribe({
+      next: (response: any) => {
+        debugger
+        this.router.navigate(['/login']);
+      }, complete: () => {
+        debugger
+      },
+      error: (error: any) => {
+        // Xử lý lỗi nếu có
+        debugger
+        console.error('Đăng ký không thành công:', error);
+      }
+    })
   }
   togglePasswordVisibility(): void {
     this.isPasswordVisible = !this.isPasswordVisible;
@@ -101,6 +94,9 @@ export class RegisterComponent {
   containsSpecialCharacter(str: string): boolean {
     return /[!@#$%^&*(),.?":{}|<>]/.test(str);
   }
+  containsOnlyNumbers(str: string): boolean {
+    return /^\d+$/.test(str);
+  }  
   checkAge() {
     if (this.dob != null) {
       const dobControl = this.registerForm.form.controls['dob'];

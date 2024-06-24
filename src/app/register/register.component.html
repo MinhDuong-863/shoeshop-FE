@@ -4,32 +4,34 @@
         <div class="login-form">
             <h2 class="login-header">Đăng ký</h2>
             <div class="form-group">
-                <h3 class="property">Số điện thoại</h3>
+                <h3 class="property fontbold-family">Số điện thoại</h3>
                 <input type="text" class="form-control" id="phonenumber" name="phone" placeholder="Phone Number" [(ngModel)]="phone"
                     (input)="onPhoneChange()" required
                     (focus)="registerForm.form.markAsTouched()">
-                <p class="text-danger fst-italic" *ngIf="phone.length < 10 && phone.length > 0 && registerForm.form.touched || phone.length > 10 && registerForm.form.touched">
+                <p class="text-danger fst-italic font-family" *ngIf="phone.length < 10 && phone.length > 0 && registerForm.form.touched || phone.length > 10 && registerForm.form.touched">
                     *Số điện thoại phải đủ 10 ký tự</p>
+                <p class="text-danger fst-italic font-family" *ngIf="!containsOnlyNumbers(phone) && phone.length > 0 && registerForm.form.touched">
+                    *Số điện thoại chỉ chứa số</p>  
             </div>
             <div class="mt-3"></div>
             <div class="form-group password-field">
-                <h3 class="property">Mật khẩu</h3>
+                <h3 class="property fontbold-family">Mật khẩu</h3>
                 <input [type]="isPasswordVisible ? 'text' : 'password'" class="form-control" id="password" name="password"
                     placeholder="Password" required [(ngModel)]="password" (focus)="registerForm.form.markAsTouched()">
-                <p class="text-danger fst-italic" *ngIf="password.length < 3 && password.length > 0 && registerForm.form.touched">
+                <p class="text-danger fst-italic font-family" *ngIf="password.length < 3 && password.length > 0 && registerForm.form.touched">
                     *Mật khẩu phải nhiều hơn 3 ký tự</p>
-                <p class="text-danger fst-italic" *ngIf="!containsNumber(password) && password.length > 0 && registerForm.form.touched">
+                <p class="text-danger fst-italic font-family" *ngIf="!containsNumber(password) && password.length > 0 && registerForm.form.touched">
                     *Mật khẩu chứa ít nhất một số</p>
-                <p class="text-danger fst-italic" *ngIf="!containsSpecialCharacter(password) && password.length > 0 && registerForm.form.touched">
+                <p class="text-danger fst-italic font-family" *ngIf="!containsSpecialCharacter(password) && password.length > 0 && registerForm.form.touched">
                     *Mật khẩu chứa ít nhất 1 ký tự đặc biệt</p>
                 <i class="password-toggle fa-solid fa-eye" style="color: #1089D3;" (click)="togglePasswordVisibility()"
                     [class.fa-eye-slash]="isPasswordVisible" [class.fa-eye]="!isPasswordVisible"></i>
             </div>
             <div class="form-group password-field">
-                <h3 class="property">Nhập lại mật khẩu</h3>
+                <h3 class="property fontbold-family">Nhập lại mật khẩu</h3>
                 <input [type]="isRetypePasswordVisible ? 'text' : 'password'" class="form-control" id="retypepassword" name="retypepassword" required placeholder="Retype Password"
                     [(ngModel)]="retypepassword" (focus)="registerForm.form.markAsTouched()">
-                <p class="text-danger fst-italic" *ngIf="retypepassword !== password && retypepassword.length > 0 && registerForm.form.touched">
+                <p class="text-danger fst-italic font-family" *ngIf="retypepassword !== password && retypepassword.length > 0 && registerForm.form.touched">
                         *Mật khẩu không khớp</p>
                 <i class="password-toggle fa-solid fa-eye" style="color: #1089D3;" (click)="toggleRetypePasswordVisibility()"
                     [class.fa-eye-slash]="isRetypePasswordVisible" [class.fa-eye]="!isRetypePasswordVisible"></i>
@@ -37,32 +39,32 @@
             <div class="mt-3"></div>
 
             <div class="form-group">
-                <h3 class="property">Họ và tên</h3>
+                <h3 class="property fontbold-family">Họ và tên</h3>
                 <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Full Name" required
                     [(ngModel)]="fullname" (focus)="registerForm.form.markAsTouched()">
-                <p class="text-danger fst-italic" *ngIf="fullname.length > 0 && fullname.length < 3 && registerForm.form.touched">
+                <p class="text-danger fst-italic font-family" *ngIf="fullname.length > 0 && fullname.length < 3 && registerForm.form.touched">
                     *Họ và tên phải nhiều hơn 3 ký tự</p>
-                <p class="text-danger fst-italic" *ngIf="containsNumber(fullname) && fullname.length > 0 && registerForm.form.touched">
+                <p class="text-danger fst-italic font-family" *ngIf="containsNumber(fullname) && fullname.length > 0 && registerForm.form.touched">
                     *Họ và tên không được chứa số</p>
-                <p class="text-danger fst-italic" *ngIf="containsSpecialCharacter(fullname) && fullname.length > 0 && registerForm.form.touched">
+                <p class="text-danger fst-italic font-family" *ngIf="containsSpecialCharacter(fullname) && fullname.length > 0 && registerForm.form.touched">
                     *Họ và tên không được chứa các ký tự đặc biệt</p>
             </div>
 
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3 class="property">Ngày sinh</h3>
+                        <h3 class="property fontbold-family">Ngày sinh</h3>
                         <div class="input-container">
                             <input type="date" class="form-control" id="dob" placeholder="Ngày sinh" required name="dob"
                                 [(ngModel)]="dob" (input)="checkAge();">
-                            <p class="text-danger fst-italic" *ngIf="registerForm.form.controls['dob'].hasError('invalidAge') && registerForm.form.touched">
+                            <p class="text-danger fst-italic font-family" *ngIf="registerForm.form.controls['dob'].hasError('invalidAge') && registerForm.form.touched">
                                 *Tuổi không hợp lệ</p>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h3 class="property">Giới tính</h3>
+                        <h3 class="property fontbold-family">Giới tính</h3>
                         <div class="input-container">
-                            <select id="gender" class="form-control" [(ngModel)]="gender">
+                            <select id="gender" class="form-control" [(ngModel)]="gender" name="gender">
                                 <option selected disabled value="-1">Chọn giới tính</option>
                                 <option value="0">Nam</option>
                                 <option value="1">Nữ</option>
@@ -73,31 +75,32 @@
                 </div>
             </div>
             <div class="form-group">
-                <h3 class="property">Địa chỉ</h3>
+                <h3 class="property fontbold-family">Địa chỉ</h3>
                 <div class="input-container">
                     <input type="text" class="form-control" id="add_province" placeholder="Tỉnh/Thành phố"
-                        [(ngModel)]="province">
+                        [(ngModel)]="province" name="province">
 
                     <input type="text" class="form-control" id="add_district" placeholder="Quận/Huyện"
-                        [(ngModel)]="district">
+                        [(ngModel)]="district" name="district">
                 </div>
 
                 <div class="input-container">
                     <input type="text" class="form-control" id="add_commune" placeholder="Phường/Xã"
-                        [(ngModel)]="commune">
+                        [(ngModel)]="commune" name="commune">
 
-                    <input type="text" class="form-control" id="add_street" placeholder="Số nhà" [(ngModel)]="street">
+                    <input type="text" class="form-control" id="add_street" placeholder="Số nhà" 
+                        [(ngModel)]="street" name="street">
                 </div>
             </div>
 
             <label class="checkbox">
                 <input checked="checked" type="checkbox" [(ngModel)]="isAccepted">
                 <div class="checkmark"></div>
-                <span class="checkbox-text">Tôi đồng ý với ...</span>
+                <span class="checkbox-text font-family">Tôi đồng ý với ...</span>
             </label>
 
             <button type="button" class="login-button" (click)="register()">Đăng ký</button>
-            <p class="text-center">Bạn đã có tài khoản?
+            <p class="text-center font-family">Bạn đã có tài khoản?
                 <span>
                     <a href="#" class="register-link">Đăng nhập</a>
                 </span>
