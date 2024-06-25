@@ -35,9 +35,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     // HomeComponent,
     // DetailProductComponent,
     // OrderComponent,
-    // OrderConfirmComponent
-    // LoginComponent
-    RegisterComponent
+    // OrderConfirmComponent,
+    LoginComponent,
+    // RegisterComponent
   ]
 })
 export class AppModule { }

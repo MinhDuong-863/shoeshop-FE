@@ -10,7 +10,7 @@
                     (focus)="registerForm.form.markAsTouched()">
                 <p class="text-danger fst-italic font-family" *ngIf="phone.length < 10 && phone.length > 0 && registerForm.form.touched || phone.length > 10 && registerForm.form.touched">
                     *Số điện thoại phải đủ 10 ký tự</p>
-                <p class="text-danger fst-italic font-family" *ngIf="!containsOnlyNumbers(phone) && phone.length > 0 && registerForm.form.touched">
+                <p class="text-danger fst-italic font-family" *ngIf="!containsOnlyNumbers(phone) && phone.length > 0 && registerForm.form.touched || phone.length > 10 && registerForm.form.touched">
                     *Số điện thoại chỉ chứa số</p>  
             </div>
             <div class="mt-3"></div>
