@@ -79,7 +79,7 @@
 
 .access-right {
     margin-top: 20px;
-    width: 200px;
+    width: 240px;
     color: black;
 }
 
@@ -113,7 +113,7 @@
 }
 
 .social-account-container {
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .social-account-container .title {
@@ -182,4 +182,71 @@
     /* Chiều rộng của đường gạch ngang */
     margin: 20px auto;
     /* Căn giữa và thêm khoảng cách trên dưới */
+}
+
+.checkbox-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    color: black;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center; /* Đảm bảo các phần tử được căn giữa theo chiều dọc */
+    gap: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+    position: relative; /* Đảm bảo các phần tử con được định vị tương đối với label */
+}
+
+.checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: relative;
+    box-shadow: #8ddbff 0px 0px 0px 2px;
+    background-color: #FCFDFE;
+    height: 20px;
+    width: 20px;
+    transition: all 0.2s ease 0s;
+    cursor: pointer;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.checkbox input:checked + .checkmark {
+    background-color: #1089D3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox input:checked + .checkmark:after {
+    display: block;
+}
+
+.checkbox .checkmark:after {
+    left: 0.45em;
+    top: 0.15em;
+    width: 0.4em;
+    height: 0.7em;
+    border: solid white;
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+    transition: all 500ms ease-in-out;
+}
+
+.checkbox-text {
+    cursor: pointer; /* Thay đổi con trỏ chuột khi hover qua văn bản */
+    margin-top: -2px;
 }
