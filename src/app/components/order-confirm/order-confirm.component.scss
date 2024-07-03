@@ -1,0 +1,152 @@
+.intro-section {
+    text-align: center;
+    color: #411C8C;
+    padding: 20px;
+}
+
+.container {
+    background-color: #F8F9FD;
+    padding: 1rem;
+    text-align: center;
+}
+
+.product-order {
+    color: #0099ff;
+    font-weight: bolder;
+}
+
+.orderconfirm-content {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    font-family: 'Nunito', sans-serif;
+}
+
+table {
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    border-collapse: separate;
+    border: 1px solid #e8e8e8;
+    border-spacing: 0;
+    background-color: white;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+}
+
+.product-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.product-name {
+    color: #0099ff;
+    margin-right: 10px;
+    display: block;
+    font-size: 20px;
+}
+
+.product-name-opacity {
+    opacity: 0.7;
+    color: black;
+    font-size: 15px;
+}
+
+.btn-gradien {
+    display: block;
+    width: 20%;
+    font-weight: bold;
+    background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
+    color: white;
+    padding-block: 15px;
+    margin: 20px auto;
+    margin-top: 30px;
+    border-radius: 40px;
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.container__receiver {
+    background: white radial-gradient(#218be2, transparent 10%);
+    background-size: 11px 11px;
+    padding-top: 10px;
+}
+
+.container__info {
+    display: grid;
+    grid-template-columns: 300px auto;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.orderconfirm_container {
+    padding: 30px;
+    border-radius: 10px;
+    border: none;
+    border-collapse: separate;
+    border: 1px solid #e8e8e8;
+    border-spacing: 0;
+    background-color: #F4F7FC;
+    box-shadow: 5px 5px 11px #bababa,
+        -5px -5px 11px #ffffff;
+    text-align: center;
+}
+
+.product-header {
+    color: #0099ff;
+    margin: 0 auto;
+}
+
+.container__info span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.container-coupon {
+    width: 100%;
+    padding: 20px;
+}
+
+.container__coupon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.container__checkout {
+    display: grid;
+    grid-template-columns: 300px auto;
+    justify-content: space-between;
+    gap: 5px;
+    text-align: left;
+}
+
+.container__checkout span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.container__info span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.container-info {
+    width: 100%;
+    padding: 40px;
+    text-align: left;
+}
