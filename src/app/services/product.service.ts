@@ -16,8 +16,8 @@ export class ProductService {
         debugger
         const params = new HttpParams()
             .set('keyWord', keyword.toString())
-            .set('categoryId', selectedCategoryId.toString())
-            .set('page', page.toString())
+            .set('category_id', selectedCategoryId)
+            .set('page', (page-1).toString())
             .set('limit', limit.toString());
         return this.http.get<Product[]>(this.apiGetProducts, { params });
     }

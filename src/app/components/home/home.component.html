@@ -5,14 +5,14 @@
         <p> Hiển thị danh sách sản phẩm</p>
     </div>
     <div class="search-box">
-        <input type="text" class="search-input" name="searchinpput" [(ngModel)]="keyword" placeholder="Tìm kiếm sản phẩm">
-        <button type="button" class="login-button" (click)="searchProduct()">Tìm kiếm</button>
         <select class="form-control font-family" name="cateBegin" [(ngModel)]="selectedCategoryId">
             <option [value]="0">Tất cả</option>
-            <option *ngFor="let category of categories" [value]="category.id" [ngValue]="category">
+            <option *ngFor="let category of categories" [value]="category.id">
                 {{category.name}}
               </option>
         </select>
+        <input type="text" class="search-input" name="searchinpput" [(ngModel)]="keyword" placeholder="Tìm kiếm sản phẩm">
+        <button type="button" class="login-button" (click)="searchProduct()">Tìm kiếm</button>
     </div>
     <div class="row">
         <div class="col-lg-3 col-md-6" *ngFor="let product of productResponses">
@@ -58,13 +58,19 @@
                     <a class="page-link" href="#" (click)="onPageChange(1)"><<</a>
                 </li>
                 <li class="page-item" *ngIf="currentPage > 1">
-                    <a class="page-link" href="#" (click)="onPageChange(currentPage - 1)"><</a>
+                    <a class="page-link" href="#"><</a>
+                </li>
+                <li class="page-item" *ngIf="currentPage > 3">
+                    <a class="page-link" href="#" (click)="onPageChange(currentPage - 1)">...</a>
                 </li>
                 <ng-container *ngFor="let page of visiblePages">
                     <li class="page-item" [ngClass]="{'active': page === currentPage}">
                         <a class="page-link" href="#" (click)="onPageChange(page)">{{ page }}</a>
                     </li>
                 </ng-container>
+                <li class="page-item" *ngIf="currentPage < 7">
+                    <a class="page-link" href="#" >...</a>
+                </li>
                 <li class="page-item" *ngIf="currentPage < totalPages - 1">
                     <a class="page-link" href="#" (click)="onPageChange(currentPage + 1)">></a>
                 </li>

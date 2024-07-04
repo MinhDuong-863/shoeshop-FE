@@ -32,6 +32,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getProducts(this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage);
 
+    this.getCategories();
+  }
+  getCategories(){
     this.categoryService.getCategories().subscribe({
       next: (categories: Category[]) => {
         debugger
@@ -43,10 +46,10 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-
   searchProduct() {
     this.currentPage = 1;
     this.itemsPerPage = 12;
+    this.keyword = this.keyword.trim();
     debugger
     this.getProducts(this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage)
   }
