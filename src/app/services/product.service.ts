@@ -10,11 +10,15 @@ import { Product } from '../models/product';
 export class ProductService {
     private apiGetProducts = `${environment.apiBaseUrl}/products`;
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient) { }
 
-    getProducts(page: number, limit: number):Observable<Product[]>{
-        const params = new HttpParams().set('page', page.toString())
-                                    .set('limit', limit.toString());
-        return this.http.get<Product[]>(this.apiGetProducts, {params});
+    getProducts(keyword: string, selectedCategoryId: number, page: number, limit: number): Observable<Product[]> {
+        debugger
+        const params = new HttpParams()
+            .set('keyWord', keyword.toString())
+            .set('categoryId', selectedCategoryId.toString())
+            .set('page', page.toString())
+            .set('limit', limit.toString());
+        return this.http.get<Product[]>(this.apiGetProducts, { params });
     }
 }
