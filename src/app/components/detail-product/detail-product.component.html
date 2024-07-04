@@ -16,59 +16,32 @@
             <div class="col-md-6">
                 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="square-image">
-                                <img src="https://pos.nvncdn.com/80c639-72864/ps/20230619_g56PqYH9vP.jpeg"
-                                    class="product-image" alt="Product Image">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="square-image">
-                                <img src="https://pos.nvncdn.com/80c639-72864/ps/20230619_g56PqYH9vP.jpeg"
-                                    class="product-image" alt="Product Image">
-                            </div>
-                        </div>
-                        <div class="carousel-item active">
-                            <div class="square-image">
-                                <img src="https://pos.nvncdn.com/80c639-72864/ps/20230619_g56PqYH9vP.jpeg"
-                                    class="product-image" alt="Product Image">
-                            </div>
+                        <div *ngFor="let image of product?.product_images; let i=index" class="carousel-item"
+                            [ngClass]="{'active': i === currentImageIndex}">
+                        <div class="square-image">
+                            <img [src]="image.image_url" alt="Product Image" class="product-image">
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" (click)="previousImage()" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" (click)="nextImage()" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
 
                 <div class="row">
                     <div class="thumbnail-container">
-                        <div class="thumbnail-item active">
-                            <img src="https://pos.nvncdn.com/80c639-72864/ps/20230619_g56PqYH9vP.jpeg"
+                        <div class="thumbnail-item"
+                            *ngFor="let image of product?.product_images; let i = index"
+                            [ngClass]="{'active': i === currentImageIndex}"
+                            (click)="thumbnailClick(i)">
+                            <img [src]="image.image_url"
                                 class="thumbnail-image" alt="Thumbnail Image">
                         </div>
-                        <div class="thumbnail-item">
-                            <img src="https://pos.nvncdn.com/80c639-72864/ps/20230619_g56PqYH9vP.jpeg"
-                                class="thumbnail-image" alt="Thumbnail Image">
-                        </div>
-                        <div class="thumbnail-item">
-                            <img src="https://pos.nvncdn.com/80c639-72864/ps/20230619_g56PqYH9vP.jpeg"
-                                class="thumbnail-image" alt="Thumbnail Image">
-                        </div>
-                        <div class="thumbnail-item">
-                            <img src="https://pos.nvncdn.com/80c639-72864/ps/20230619_g56PqYH9vP.jpeg"
-                                class="thumbnail-image" alt="Thumbnail Image">
-                        </div>
-                        <!-- <div class="thumbnail-item">
-                            <img src="https://pos.nvncdn.com/80c639-72864/ps/20230619_g56PqYH9vP.jpeg"
-                                class="thumbnail-image" alt="Thumbnail Image">
-                        </div>  -->
                     </div>
                 </div>
             </div>
@@ -83,8 +56,8 @@
                         <i class="fa-solid fa-heart wishlist-icon"></i>
                         <p class="product-description">Thêm vào danh sách yêu thích</p>
                     </div>
-                    <p class="pricetext boldtext">2.000.000 VNĐ</p>
                     <p class="pricetext-discount">2.000.000 VNĐ</p>
+                    <p class="pricetext boldtext">2.000.000 VNĐ</p>
                     <hr class="custom-hr">
                     <div class="link-product">
                         <div class="col-md-2">

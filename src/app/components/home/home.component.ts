@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
   getProducts(keyword: string, selectedCategoryId: number, page: number, limit: number) {
     this.productService.getProducts(keyword, selectedCategoryId, page, limit).subscribe({
       next: (response: any) => {
+        debugger
         response.productResponses.forEach((product: Product) => {
           product.url = `${environment.apiBaseUrl}/products/images/${product.thumbnail}`;
           product.formattedPrice = this.formatCurrency(product.price);
