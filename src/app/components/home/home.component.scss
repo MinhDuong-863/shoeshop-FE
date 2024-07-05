@@ -4,7 +4,7 @@
     padding: 20px;
 }
 
-.container{
+.container {
     background-color: #F8F9FD;
     padding: 1rem;
 }
@@ -33,16 +33,6 @@
     box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.form-control {
-    background: transparent;
-    border: 1px solid #411C8C;
-    color: #411C8C;
-}
-
-.form-control::placeholder {
-    color: #411C8C
-}
-
 .product-item {
     position: relative;
     display: flex;
@@ -51,8 +41,10 @@
     background-color: #ffffff;
     background-clip: border-box;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 20rem; /* 320px */
+    width: 20rem;
+    /* 320px */
     flex-direction: column;
+    cursor: pointer;
 }
 
 .product-image {
@@ -60,10 +52,12 @@
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 1rem;
-    height: 11rem; /* 160px */
+    height: 18rem;
+    width: 18rem;
     overflow: hidden;
     border-radius: 0.5rem;
-    background-color: #667eea; /* Adjust color as needed */
+    background-color: #F6F6F6;
+    /* Adjust color as needed */
     background-clip: border-box;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
@@ -80,6 +74,15 @@
     letter-spacing: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    white-space: nowrap;
+    /* Không cho xuống dòng */
+    overflow: hidden;
+    /* Ẩn phần dư thừa */
+    text-overflow: ellipsis;
+    /* Thêm dấu ba chấm */
+    max-width: 300px;
+    /* Đặt chiều rộng tối đa, bạn có thể tùy chỉnh */
 }
 
 .product-description {
@@ -105,7 +108,7 @@
     display: flex;
 }
 
-.color-star{
+.color-star {
     color: #ffa622;
     margin-right: 10px;
 }
@@ -152,7 +155,8 @@
 }
 
 .button:hover {
-    box-shadow: 0 8px 10px rgba(66, 153, 225, 0.4); /* Tailwind hover:shadow-lg */
+    box-shadow: 0 8px 10px rgba(66, 153, 225, 0.4);
+    /* Tailwind hover:shadow-lg */
 }
 
 .button:focus,
@@ -166,6 +170,7 @@
     opacity: 0.5;
     box-shadow: none;
 }
+
 .button-cart {
     background-color: white;
     color: #4299e1;
@@ -213,23 +218,90 @@
     box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
     border: none;
     transition: all 0.2s ease-in-out;
+    cursor: pointer !important;
 }
-.flex{
+
+.login-button:hover{
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0 8px 10px;
+}
+
+.flex {
     display: flex;
 }
-.blur-text{
+
+.blur-text {
     opacity: 0.5;
     margin-right: 10px;
 }
-.textright{
+
+.textright {
     text-align: right;
 }
-.button-active{
-    padding: 0px 20px 20px 20px;display: flex;
+
+.button-active {
+    padding: 0px 20px 20px 20px;
+    display: flex;
     justify-content: center;
-    gap: 10px; /* khoảng cách giữa các nút */
+    gap: 10px;
+    /* khoảng cách giữa các nút */
 }
 
+.paging-item {
+    margin: 5px;
+    width: 35px;
+    height: 30px;
+}
 
+.pagination{
+    margin-top: 20px;
+}
 
-  
+.pagination .page-link {
+    background-color: #1e86f4;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    padding: auto;
+    margin: 5px;
+    color: #4299e1;
+    border-radius: 100%;
+    background: #ffffff;
+    box-shadow: 20px 20px 60px #d9d9d9,
+        -20px -20px 60px #ffffff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #1e86f4;
+    font-family: 'Nunito', sans-serif;
+    padding: auto;
+    margin: 5px;
+    color: white;
+    border-radius: 100%;
+    background: #1e86f4;
+    box-shadow: 20px 20px 60px #d9d9d9,
+        -20px -20px 60px #ffffff;
+}
+
+.pagination .page-item .page-link {
+    color: #007bff;
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.pagination .page-item.active .page-link:hover {
+    background-color: #5ba2ef;
+    border-color: #dee2e6;
+}
+
+.form-control {
+    width: 200px;
+    background: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 40px;
+    box-shadow: #cff0ff 0px 10px 10px -5px;
+    border-inline: 2px solid transparent;
+    font-family: 'Nunito', sans-serif;
+}

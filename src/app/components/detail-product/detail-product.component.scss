@@ -68,7 +68,7 @@
 }
 
 .thumbnail-item.active {
-    border: 2px solid black;
+    border: 3px solid #4299e1;
     border-radius: 11px;
 }
 
@@ -149,12 +149,12 @@
 
 .pricetext {
     font-size: 25px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-weight: 600;
 }
 
 .pricetext-discount {
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Oswald', sans-serif;
     opacity: 0.5;
     text-decoration: line-through;
@@ -171,16 +171,49 @@
     /* Căn giữa và thêm khoảng cách trên dưới */
 }
 
-.color-container {}
+.color-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
 .boxcolor {
-    font-size: 40px;
+    font-size: 35px;
     margin-right: 10px;
+    padding: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .boxcolor.activebox {
-    border: 2px solid white;
-    border-radius: 11px;
+    width: 40px;
+    height: 40px;
+    font-size: 35px;
+    border: 2px solid rgb(236, 236, 236);
+    border-radius: 7px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.size-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.boxsize {
+    margin-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: #e0e0e0;
+    // box-shadow:  5px 5px 11px #c7c7c7,
+    //          -5px -5px 11px #f9f9f9;
 }
 
 .button-cart {
@@ -258,14 +291,16 @@
 }
 
 .button-plus {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
+    padding: auto;
     background: #e0e0e0;
-    box-shadow:  5px 5px 10px #c5c5c5,
-             -5px -5px 10px #fbfbfb;
+    box-shadow: 5px 5px 10px #c5c5c5,
+        -5px -5px 10px #fbfbfb;
 }
-.button-plus:hover{
-    box-shadow:  5px 5px 9px #969696,
-             -5px -5px 9px #ffffff;
+
+.button-plus:hover {
+    box-shadow: 5px 5px 9px #969696,
+        -5px -5px 9px #ffffff;
 }
