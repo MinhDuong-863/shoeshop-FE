@@ -7,7 +7,7 @@
 
     <div class="orderconfirm-content container__receiver">
         <h2 class="product-order">Đơn hàng của bạn</h2>
-        
+
         <div class="container-info">
             <h4 class="product-header mb-3">Mã đơn hàng:</h4>
             <div class="container__info">
@@ -37,41 +37,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <div class="product-info">
-                                <img src="https://pos.nvncdn.com/80c639-72864/ps/20230619_g56PqYH9vP.jpeg"
-                                    class="product-image" alt="">
+                    <ng-container *ngFor="let item of cartItems">
+                        <tr>
+                            <td>
+                                <div class="product-info">
+                                    <img [src]="item.product.thumbnail"
+                                        class="product-image" alt="">
                                     <div>
-                                        <span class="product-name">Tên sản phẩm</span>
-                                        <span class="product-name product-name-opacity">Màu sắc: Đỏ</span>
-                                        <span class="product-name product-name-opacity">Kích thước: M</span>
+                                        <span class="product-name">{{item.product.name}}</span>
+                                        <span class="product-name product-name-opacity">Màu sắc:</span>
+                                        <span class="product-name product-name-opacity">Kích thước:</span>
                                     </div>
-                            </div>
-                        </td>
-                        <td>2</td>
-                        <td>20.000.000</td>
-                        <td>40.000.000</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="product-info">
-                                <img src="https://pos.nvncdn.com/80c639-72864/ps/20230619_g56PqYH9vP.jpeg"
-                                    class="product-image" alt="">
-                                <span class="product-name">Tên sản phẩm</span>
-                            </div>
-                        </td>
-                        <td>2</td>
-                        <td>20.000.000 VND</td>
-                        <td>40.000.000 VND</td>
-                    </tr>
+                                </div>
+                            </td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{formatCurrency(item.product.price)}}</td>
+                            <td>{{formatCurrency(item.product.price * item.quantity)}}</td>
+                        </tr>
+                    </ng-container>
                 </tbody>
             </table>
             <div class="mt-3 container-coupon">
                 <h4 class="product-header mb-3">Tổng tiền:</h4>
                 <div class="container__checkout">
                     <span>Tổng tiền hàng:</span>
-                    <span>47.99$</span>
+                    <span>{{formatCurrency(calculateTotal())}}</span>
                     <span>Giảm giá:</span>
                     <span>3.99$</span>
                     <span>Phí vận chuyển:</span>
