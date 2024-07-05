@@ -18,36 +18,34 @@
                     <div class="carousel-inner">
                         <div *ngFor="let image of product?.product_images; let i=index" class="carousel-item"
                             [ngClass]="{'active': i === currentImageIndex}">
-                        <div class="square-image">
-                            <img [src]="image.image_url" alt="Product Image" class="product-image">
+                            <div class="square-image">
+                                <img [src]="image.image_url" alt="Product Image" class="product-image">
+                            </div>
                         </div>
                     </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                        data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" (click)="previousImage()" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                        data-bs-slide="next">
                         <span class="carousel-control-next-icon" (click)="nextImage()" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-
                 <div class="row">
                     <div class="thumbnail-container">
-                        <div class="thumbnail-item"
-                            *ngFor="let image of product?.product_images; let i = index"
-                            [ngClass]="{'active': i === currentImageIndex}"
-                            (click)="thumbnailClick(i)">
-                            <img [src]="image.image_url"
-                                class="thumbnail-image" alt="Thumbnail Image">
+                        <div class="thumbnail-item" *ngFor="let image of product?.product_images; let i = index"
+                            [ngClass]="{'active': i === currentImageIndex}" (click)="thumbnailClick(i)">
+                            <img [src]="image.image_url" class="thumbnail-image" alt="Thumbnail Image">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="product-detail">
-                    <h2 class="product-name">Thông tin chi tiết sản phẩm</h2>
+                    <h2 class="product-name">{{product?.name}}</h2>
                     <div class="link-product">
                         <p class="product-description blur-text">Hãng:</p>
                         <p class="product-description boldtext">Adidas</p>
@@ -56,27 +54,38 @@
                         <i class="fa-solid fa-heart wishlist-icon"></i>
                         <p class="product-description">Thêm vào danh sách yêu thích</p>
                     </div>
-                    <p class="pricetext-discount">2.000.000 VNĐ</p>
-                    <p class="pricetext boldtext">2.000.000 VNĐ</p>
+                    <p class="pricetext-discount">{{ formatCurrency(product?.price ?? 0) }}</p>
+                    <p class="pricetext boldtext">{{ formatCurrency(product?.price ?? 0) }}</p>
                     <hr class="custom-hr">
                     <div class="link-product">
                         <div class="col-md-2">
                             <p class="product-description">Mô tả:</p>
                         </div>
                         <div class="col-md-10">
-                            <p class="product-description">bla bla bla</p>
+                            <p class="product-description">{{product?.description}}</p>
                         </div>
                     </div>
                     <div class="link-product">
                         <div class="col-md-2">
                             <p class="product-description">Màu sắc:</p>
                         </div>
-
                         <div class="col-md-10">
                             <div class="color-container">
-                                <i class="fa-solid fa-square boxcolor activebox" style="color: #f97777"></i>
-                                <i class="fa-solid fa-square boxcolor" style="color: #ffa622"></i>
-                                <i class="fa-solid fa-square boxcolor" style="color: #411C8C"></i>
+                                <div>
+                                    <i class="fa-solid fa-square boxcolor"
+                                        [ngClass]="{'activebox': selectedColor === '#f97777'}" style="color: #f97777"
+                                        (click)="selectColor('#f97777')"></i>
+                                </div>
+                                <div>
+                                    <i class="fa-solid fa-square boxcolor"
+                                        [ngClass]="{'activebox': selectedColor === '#ffa622'}" style="color: #ffa622"
+                                        (click)="selectColor('#ffa622')"></i>
+                                </div>
+                                <div>
+                                    <i class="fa-solid fa-square boxcolor"
+                                        [ngClass]="{'activebox': selectedColor === '#411C8C'}" style="color: #411C8C"
+                                        (click)="selectColor('#411C8C')"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -84,33 +93,40 @@
                         <div class="col-md-2">
                             <p class="product-description">Size:</p>
                         </div>
-
                         <div class="col-md-10">
-                            <p class="product-description">S, M, L</p>
+                            <div class="size-container">
+                                <select>
+                                    <option value="size">38</option>
+                                    <option value="size">39</option>
+                                    <option value="size">40</option>
+                                    <option value="size">41</option>
+                                    <option value="size">42</option>
+                                    <option value="size">43</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="link-product">
                         <div class="col-md-2">
-                            Số lượng
+                            Số lượng:
                         </div>
                         <div class="col-md-10">
-                            
-                    <div class="product-quantity">
-                        <div class="border-wrapper">
-                            <button class="button-plus">
-                                <i class="fa-solid fa-minus" style="color: #4299E1;"></i>
-                            </button>
-                            <input type="text" style="font-family: 'Nunito', sans-serif;" value="1">
-                            <button class="button-plus">
-                                <i class="fa-solid fa-plus" style="color: #4299E1;"></i>
-                            </button>
-                        </div>
-                    </div>
+                            <div class="product-quantity">
+                                <div class="border-wrapper">
+                                    <button class="button-plus" (click)="decreaseQuantity()">
+                                        <i class="fa-solid fa-minus" style="color: #4299E1; font-size: 20px;"></i>
+                                    </button>
+                                    <input type="text" style="font-family: 'Nunito', sans-serif;" [value]="quantity">
+                                    <button class="button-plus" (click)="increaseQuantity()">
+                                        <i class="fa-solid fa-plus" style="color: #4299E1;"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="product-action">
-                        <button class="button-cart">Thêm vào giỏ hàng</button>
-                        <button class="button">Mua ngay</button>
+                        <button class="button-cart" (click)="addToCart()">Thêm vào giỏ hàng</button>
+                        <button class="button" (click)="buyNow()">Mua ngay</button>
                     </div>
 
                 </div>
