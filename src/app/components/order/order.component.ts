@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderDTO } from '../../dtos/user/order.dto';
 import { Validator } from 'class-validator';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-order',
@@ -18,6 +19,7 @@ export class OrderComponent implements OnInit {
   totalAmount: number = 0;
   shippingFee: number = 15000;
   shippingMethod: string = 'basic';
+  paymentMethod: string = 'cod';
   voucher: number = 0;
   couponCode: string = '';
 
@@ -29,7 +31,7 @@ export class OrderComponent implements OnInit {
     address: '',
     note: '',
     total_money: 0,
-    payment_method: 'cod',
+    payment_method: this.paymentMethod,
     shipping_method: this.shippingMethod,
     coupon_code: '',
     cart_items: []
@@ -38,6 +40,7 @@ export class OrderComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private productService: ProductService,
+    private orderService: OrderService,
     private fb: FormBuilder
   ) { 
     this.orderForm = this.fb.group({
@@ -45,8 +48,8 @@ export class OrderComponent implements OnInit {
       email: ['',[Validators.required, Validators.email]],
       phone_number: ['',[Validators.required, Validators.pattern('^[0-9]{10,11}$'), Validators.minLength(10)]],
       address: ['',[Validators.required]],
-      payment_method: ['cod',[Validators.required]],
-      shipping_method: ['',[Validators.required]],
+      payment_method: [this.paymentMethod,[Validators.required]],
+      shipping_method: [this.shippingMethod,[Validators.required]],
       coupon_code: ['']
     });
   }
@@ -82,6 +85,31 @@ export class OrderComponent implements OnInit {
       }
     });
   }
+  placeOrder(){
+    debugger;
+    if(this.orderForm.valid){
+      // Sử dụng toán tử spread (...) để sao chép giá trị từ form vào orderData
+      this.orderData={...this.orderData,...this.orderForm.value};
+      this.orderData.cart_items = this.cartItems.map(cartItem => ({
+        product_id: cartItem.product.id,
+        quantity: cartItem.quantity
+      }));
+      // dữ liệu hợp lệ, gọi service để đặt hàng
+      this.orderService.placeOrder(this.orderData).subscribe({
+        next:(response)=>{
+          debugger;
+          console.log('Order placed:', response);
+        }, complete:()=>{
+          debugger;
+          this.calculateTotal();
+        },error:(error:any)=>{
+          console.error('Error placing order:', error);
+        },
+      });
+    }else{
+      alert('Dữ liệu không hợp lệ');
+    }
+  }
   calculateTotal(): number{
     return this.totalAmount=this.cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0);
   }
@@ -96,6 +124,14 @@ export class OrderComponent implements OnInit {
     } else {
       this.shippingFee = 30000;
       this.shippingMethod = 'express';
+    }
+  }
+  onPaymentMethodChange(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    if(inputElement.value === 'cod') {
+      this.paymentMethod = 'cod';
+    } else {
+      this.paymentMethod = 'creditcard';
     }
   }
   totalMoney(): number {

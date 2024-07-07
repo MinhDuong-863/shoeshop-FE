@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="container">
     <div class="intro-section">
         <h1>Đây là trang order </h1>
@@ -42,8 +41,8 @@
                         <h4 class="product-header mb-3">Phương thức vận chuyển</h4>
                         <div class="wrapper">
                             <div class="card">
-                                <input class="input" type="radio" name="card" value="basic" checked
-                                    (change)="onShippingMethodChange($event)">
+                                <input class="input" type="radio" formControlName="shipping_method" value="basic"
+                                    checked (change)="onShippingMethodChange($event)">
                                 <label class="label">
                                     <div class="title">Nhanh</div>
                                     <div class="price">
@@ -52,12 +51,35 @@
                                 </label>
                             </div>
                             <div class="card">
-                                <input class="input" type="radio" name="card" value="express"
+                                <input class="input" type="radio" formControlName="shipping_method" value="express"
                                     (change)="onShippingMethodChange($event)">
                                 <label class="label">
                                     <div class="title">Hỏa tốc</div>
                                     <div class="price">
                                         <span class="span">30.000 VNĐ</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <h4 class="product-header mb-3 mt-3">Phương thức thanh toán</h4>
+                        <div class="wrapper">
+                            <div class="card-payment">
+                                <input class="input-payment" type="radio" name="card-payment" value="cod" checked
+                                    (change)="onPaymentMethodChange($event)" formControlName="payment_method">
+                                <label class="label">
+                                    <div class="title">COD</div>
+                                    <div class="price">
+                                        <span class="span">Thanh toán khi nhận hàng</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="card-payment">
+                                <input class="input-payment" type="radio" name="card-payment" value="creditcard"
+                                    (change)="onPaymentMethodChange($event)" formControlName="payment_method">
+                                <label class="label">
+                                    <div class="title">Credit Card</div>
+                                    <div class="price">
+                                        <span class="span">Thanh toán bằng thẻ tín dụng</span>
                                     </div>
                                 </label>
                             </div>
@@ -86,7 +108,7 @@
                         </div>
                     </div>
                     <div class="text-end mt-3">
-                        <button class="button" type="button">Đặt hàng</button>
+                        <button class="button" type="button" (click)="placeOrder()">Đặt hàng</button>
                     </div>
                 </div>
                 <div class="col-md-4 container__receiver">
@@ -94,7 +116,7 @@
                     <div class="mb-3 mt-4 receiver">
                         <label>Họ và tên</label>
                         <input type="text" id="fullname" name="fullname" class="input__email"
-                            placeholder="Họ và tên không được để trống" [(ngModel)]="orderData.fullname"
+                            placeholder="Nhập họ và tên..." formControlName="fullname"
                             [class.is-invalid]="orderForm.get('fullname')!.invalid && orderForm.get('fullname')!.touched">
                         <div *ngIf="orderForm.get('fullname')!.invalid && orderForm.get('fullname')!.touched"
                             class="invalid-feedback">
@@ -103,23 +125,38 @@
                     </div>
                     <div class="mb-3 receiver">
                         <label>Email</label>
-                        <input type="text" id="email" name="email" class="input__email" placeholder="Nhập Email"
-                            [(ngModel)]="orderData.email">
+                        <input type="text" id="email" name="email" class="input__email" placeholder="Nhập Email..."
+                            formControlName="email"
+                            [class.is-invalid]="orderForm.get('email')!.invalid && orderForm.get('email')!.touched">
+                        <div *ngIf="orderForm.get('email')!.invalid && orderForm.get('email')!.touched"
+                            class="invalid-feedback">
+                            Email không hợp lệ!
+                        </div>
                     </div>
                     <div class="mb-3 receiver">
                         <label>Số điện thoại</label>
-                        <input type="text" id="phone" name="phone" class="input__email"
-                            placeholder="Số điện thoại không được để trống" [(ngModel)]="orderData.phone_number">
+                        <input type="text" id="phone_number" name="phone_number" class="input__email"
+                            placeholder="Nhập số điện thoại..." formControlName="phone_number"
+                            [class.is-invalid]="orderForm.get('phone_number')!.invalid && orderForm.get('phone_number')!.touched">
+                        <div *ngIf="orderForm.get('phone_number')!.invalid && orderForm.get('phone_number')!.touched"
+                            class="invalid-feedback">
+                            Số điện thoại không hợp lệ!
+                        </div>
                     </div>
                     <div class="mb-3 receiver">
                         <label>Địa chỉ</label>
                         <input type="text" id="address" name="address" class="input__email"
-                            placeholder="Địa chỉ không được để trống" [(ngModel)]="orderData.address">
+                            placeholder="Nhập địa chỉ..." formControlName="address"
+                            [class.is-invalid]="orderForm.get('address')!.invalid && orderForm.get('address')!.touched">
+                        <div *ngIf="orderForm.get('address')!.invalid && orderForm.get('address')!.touched"
+                            class="invalid-feedback">
+                            Địa chỉ không được để trống!
+                        </div>
                     </div>
                     <div class="mb-3 receiver">
                         <label>Ghi chú</label>
                         <input type="text" id="note" name="note" class="input__email" placeholder="Nhập ghi chú ..."
-                            [(ngModel)]="orderData.note">
+                            formControlName="note">
                     </div>
                 </div>
             </div>
