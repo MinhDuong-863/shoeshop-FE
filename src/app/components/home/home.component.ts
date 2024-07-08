@@ -4,6 +4,8 @@ import { Product } from '../../models/product';
 import { environment } from '../../environments/environment';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../models/category';
+import { TokenService } from '../../services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +29,9 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private categoryService: CategoryService) { }
+    private categoryService: CategoryService,
+    private router: Router,
+    private tokenService: TokenService) { }
 
   ngOnInit() {
     this.getProducts(this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage);
@@ -93,6 +97,10 @@ export class HomeComponent implements OnInit {
 
   formatCurrency(amount: number): string {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+  }
+
+  onProductClick(productId: number) {
+    this.router.navigate(['/products', productId]);
   }
 
 }
