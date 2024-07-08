@@ -12,6 +12,7 @@ export class TokenInterceptor implements HttpInterceptor {
         req: HttpRequest<any>,
         next: HttpHandler): Observable<HttpEvent<any>> {
         const token = this.tokenService.getToken();
+        debugger
         if (token) {
             req = req.clone({
                 setHeaders: {

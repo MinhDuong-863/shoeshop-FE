@@ -34,7 +34,7 @@ export class DetailProductComponent implements OnInit {
     // const idParam = this.activatedRoute.snapshot.paramMap.get('id');
     debugger
     // this.cartService.clearCart();
-    const idParam = 20 //fake tạm 1 giá trị
+    const idParam = 2 //fake tạm 1 giá trị
     if (idParam !== null) {
       this.productId = +idParam;
     }

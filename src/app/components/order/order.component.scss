@@ -60,6 +60,7 @@ td {
     height: 100px;
     border-radius: 5px;
     margin-right: 10px;
+    border: 2px solid white;
 }
 
 .product-name {
@@ -226,6 +227,17 @@ td {
     background: #fff;
     border-radius: 10px;
     transition: all 0.3s;
+    cursor: pointer;
+}
+
+.card-payment {
+    position: relative;
+    width: 210px;
+    height: 60px;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s;
+    cursor: pointer;
 }
 
 .input {
@@ -264,24 +276,56 @@ td {
     border-radius: 50%;
 }
 
-.input[value="standart"]:checked+.check::after {
-    background-color: rgba(255, 165, 0, 0.7);
-}
-
-.input[value="premium"]:checked+.check::after {
-    background-color: rgba(0, 128, 0, 0.7);
-}
-
 .input[value="basic"]:checked {
-    border: 1.5px solid rgba(255, 0, 0, 0.7);
+    border: 2px solid rgba(0, 128, 0, 0.7);
 }
 
-.input[value="standart"]:checked {
-    border: 1.5px solid rgba(255, 165, 0, 0.7);
+.input[value="express"]:checked {
+    border: 2px solid rgba(255, 165, 0, 0.7);
 }
 
-.input[value="premium"]:checked {
-    border: 1.5px solid rgba(0, 128, 0, 0.7);
+.input-payment {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    appearance: none;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.input-payment+.check::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #d0d0d0;
+    border-radius: 50%;
+    background-color: #E8E8E8;
+}
+
+.input-payment:checked+.check::after {
+    content: '';
+    position: absolute;
+    top: 19px;
+    right: 19px;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 0, 0, 0.7);
+    border-radius: 50%;
+}
+
+.input-payment[value="cod"]:checked {
+    border: 2px solid rgba(0, 128, 0, 0.7);
+}
+
+.input-payment[value="creditcard"]:checked {
+    border: 2px solid rgba(255, 165, 0, 0.7);
 }
 
 .label {
@@ -313,4 +357,22 @@ td {
     font-weight: 700;
     font-size: 13px;
     font-family: 'Nunito', sans-serif;
+}
+
+.product-name-opacity {
+    opacity: 0.7;
+    color: black;
+    font-size: 15px;
+    display: block;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+}
+
+.invalid-feedback{
+    font-family: 'Nunito', sans-serif;
+    font-style: italic;
+    margin-left: 10px;
 }

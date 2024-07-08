@@ -8,11 +8,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { OrderComponent } from './components/order/order.component';
-import { OrderConfirmComponent } from './components/order-confirm/order-confirm.component';
+import { OrderDetailComponent } from './components/order-detail/order.detail.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,10 +23,11 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     HeaderComponent,
     LoginComponent,
     OrderComponent,
-    OrderConfirmComponent,
+    OrderDetailComponent,
     RegisterComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -40,9 +42,9 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
   ],
   bootstrap: [
     // HomeComponent,
-    DetailProductComponent,
+    // DetailProductComponent,
     // OrderComponent,
-    // OrderConfirmComponent,
+    OrderDetailComponent,
     // LoginComponent,
     // RegisterComponent
   ]
