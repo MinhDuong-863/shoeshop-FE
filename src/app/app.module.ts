@@ -8,7 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { OrderComponent } from './components/order/order.component';
-import { OrderConfirmComponent } from './components/order-confirm/order-confirm.component';
+import { OrderDetailComponent } from './components/order-detail/order.detail.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -23,7 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     LoginComponent,
     OrderComponent,
-    OrderConfirmComponent,
+    OrderDetailComponent,
     RegisterComponent
   ],
   imports: [
@@ -43,8 +43,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   bootstrap: [
     // HomeComponent,
     // DetailProductComponent,
-    OrderComponent,
-    // OrderConfirmComponent,
+    // OrderComponent,
+    OrderDetailComponent,
     // LoginComponent,
     // RegisterComponent
   ]

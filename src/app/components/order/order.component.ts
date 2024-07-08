@@ -22,6 +22,7 @@ export class OrderComponent implements OnInit {
   paymentMethod: string = 'cod';
   voucher: number = 0;
   couponCode: string = '';
+  totalMoney: number = 0;
 
   orderData: OrderDTO = {
     user_id: 5,
@@ -30,7 +31,7 @@ export class OrderComponent implements OnInit {
     phone_number: '',
     address: '',
     note: '',
-    total_money: 0,
+    total_money: this.totalMoney,
     payment_method: this.paymentMethod,
     shipping_method: this.shippingMethod,
     coupon_code: '',
@@ -94,6 +95,7 @@ export class OrderComponent implements OnInit {
         product_id: cartItem.product.id,
         quantity: cartItem.quantity
       }));
+      this.totalMoney = this.intoMoney();
       // dữ liệu hợp lệ, gọi service để đặt hàng
       this.orderService.placeOrder(this.orderData).subscribe({
         next:(response)=>{
@@ -134,7 +136,7 @@ export class OrderComponent implements OnInit {
       this.paymentMethod = 'creditcard';
     }
   }
-  totalMoney(): number {
+  intoMoney(): number {
     return this.totalAmount + this.shippingFee - this.voucher;
   }
 }
