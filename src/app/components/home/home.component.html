@@ -5,7 +5,8 @@
         <p> Hiển thị danh sách sản phẩm</p>
     </div>
     <div class="search-box">
-        <select class="form-control font-family" name="cateBegin" [(ngModel)]="selectedCategoryId">
+        <select class="form-control font-family" name="cateBegin" 
+            [(ngModel)]="selectedCategoryId" (change)="searchProduct()">
             <option [value]="0">Tất cả</option>
             <option *ngFor="let category of categories" [value]="category.id">
                 {{category.name}}
@@ -74,8 +75,8 @@
                 <li class="page-item" *ngIf="currentPage < totalPages - 1">
                     <a class="page-link" href="#" (click)="onPageChange(currentPage + 1)">></a>
                 </li>
-                <li class="page-item" *ngIf="currentPage < totalPages">
-                    <a class="page-link" href="#" (click)="onPageChange(totalPages - 1)">>></a>
+                <li class="page-item" *ngIf="currentPage < totalPages + 1">
+                    <a class="page-link" href="#" (click)="onPageChange(totalPages)">>></a>
                 </li>
             </ul>
         </nav>

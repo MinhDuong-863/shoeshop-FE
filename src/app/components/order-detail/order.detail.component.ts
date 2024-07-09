@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderResponse } from '../../responses/user/order.response';
+import { OrderResponse } from '../../responses/order/order.response';
 import { OrderService } from '../../services/order.service';
 import { environment } from '../../environments/environment';
 import { OrderDetail } from '../../models/order.detail';

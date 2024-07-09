@@ -120,4 +120,7 @@ export class RegisterComponent {
       dobControl.markAsTouched();
     }
   }
+  loginClick() {
+    this.router.navigate(['/login']);
+  }
 }

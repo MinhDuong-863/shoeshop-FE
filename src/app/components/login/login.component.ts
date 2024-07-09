@@ -1,12 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { LoginDTO } from '../../dtos/user/login.dto';
 import { LoginResponse} from '../../responses/user/login.response';
 import { TokenService } from '../../services/token.service';
 import { RoleService } from '../../services/role.service';
 import { Role } from '../../models/role';
+import { UserResponse } from '../../responses/user/user.response';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,10 @@ export class LoginComponent {
   rememberMe: boolean;
   selectedRole: Role | undefined;
 
+  userResponse?: UserResponse;
+
   constructor(
+    private activeRoute: ActivatedRoute,
     private router: Router, 
     private userService: UserService,
     private tokenService: TokenService,
@@ -34,8 +38,8 @@ export class LoginComponent {
     this.phone='';
     this.password = '';
     this.isPasswordVisible = false;
-    this.roleBegin = -1;
-    this.rememberMe = false;
+    this.roleBegin = 2;
+    this.rememberMe = true;
   }
 
   ngOnInit(){
@@ -44,7 +48,7 @@ export class LoginComponent {
       next: (roles: Role[]) => {
         debugger
         this.roles = roles;
-        this.selectedRole = roles.length > 0 ? roles[0]: undefined;
+        this.selectedRole = roles.find(role => role.id === 2);
       },
       error: (error: any) => {
         debugger
@@ -64,8 +68,31 @@ export class LoginComponent {
         const {token} = response
         if(this.rememberMe){
           this.tokenService.setToken(token);  
+          debugger
+          this.userService.getUserDetails(token).subscribe({
+            next: (response: any) => {
+              debugger
+              this.userResponse = {
+                id: response.id,
+                fullname: response.fullname,
+                address: response.address,
+                is_active: response.is_active,
+                date_of_birth: new Date(response.date_of_birth),
+                facebook_account_id: response.facebook_account_id,
+                google_account_id: response.google_account_id,
+                role: response.role
+              };
+              this.userService.saveUserToLocalStorage(this.userResponse);
+              this.router.navigate(['/']);
+            },complete: () => {
+              debugger
+            },error: (error: any) => {
+              debugger
+              alert(error.error.message);
+            }
+          });
         }
-        //this.router.navigate(['/login']);
+        
       }, complete: () => {
         debugger
       },
@@ -83,4 +110,7 @@ export class LoginComponent {
   containsOnlyNumbers(str: string): boolean {
     return /^\d+$/.test(str);
   }  
+  registerClick() {
+    this.router.navigate(['/register']);
+  }
 }
