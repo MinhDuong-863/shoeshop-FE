@@ -111,5 +111,12 @@ export class DetailProductComponent implements OnInit {
     }
   }
   buyNow(): void {
+    debugger
+    if(this.product){
+      this.cartService.addToCart(this.product.id, this.quantity);
+      this.route.navigate(['/orders']);
+    }else{
+      console.error('Product is not available');
+    }
   }
 }

@@ -3,6 +3,7 @@ import { OrderResponse } from '../../responses/order/order.response';
 import { OrderService } from '../../services/order.service';
 import { environment } from '../../environments/environment';
 import { OrderDetail } from '../../models/order.detail';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-detail',
@@ -28,15 +29,19 @@ export class OrderDetailComponent implements OnInit {
     order_details: []
   }
 
-  constructor(private orderService: OrderService) { }
+  constructor(
+    private orderService: OrderService,
+    private activatedRoute:ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.getOrderDetail();
   }
 
   getOrderDetail(): void {
-    const orderId = 2;
-    this.orderService.getOrderById(orderId).subscribe({
+    const orderId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.orderService.getOrderById(Number(orderId)).subscribe({
       next: (response: any) => {
         debugger;
         this.orderResponse.id = response.id;
@@ -73,5 +78,9 @@ export class OrderDetailComponent implements OnInit {
 
   formatDate(date: Date): string {
     return date.toLocaleDateString('vi-VN');
+  }
+
+  continueShopping(): void {
+    this.router.navigate(['/']);
   }
 }

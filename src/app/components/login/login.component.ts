@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
@@ -14,7 +14,7 @@ import { UserResponse } from '../../responses/user/user.response';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   @ViewChild('loginForm') loginForm!: NgForm;
 
   phone: string;
@@ -99,7 +99,7 @@ export class LoginComponent {
       error: (error: any) => {
         // Xử lý lỗi nếu có
         debugger
-        console.error('Đăng ký không thành công:', error);
+        alert('Đăng nhập thất bại');
       }
     })
   }

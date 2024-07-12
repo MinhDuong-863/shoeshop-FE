@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderDTO } from '../../dtos/user/order.dto';
 import { Validator } from 'class-validator';
 import { OrderService } from '../../services/order.service';
+import { TokenService } from '../../services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -25,7 +27,7 @@ export class OrderComponent implements OnInit {
   totalMoney: number = 0;
 
   orderData: OrderDTO = {
-    user_id: 5,
+    user_id: 0,
     fullname: '',
     email: '',
     phone_number: '',
@@ -42,6 +44,8 @@ export class OrderComponent implements OnInit {
     private cartService: CartService,
     private productService: ProductService,
     private orderService: OrderService,
+    private tokenService: TokenService,
+    private router: Router,
     private fb: FormBuilder
   ) { 
     this.orderForm = this.fb.group({
@@ -56,6 +60,9 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger
+    // this.cartService.clearCart();
+    this.orderData.user_id = this.tokenService.getUserId();
     debugger
     const cart = this.cartService.getCart();
     const productIds = Array.from(cart.keys());
@@ -95,17 +102,19 @@ export class OrderComponent implements OnInit {
         product_id: cartItem.product.id,
         quantity: cartItem.quantity
       }));
-      this.totalMoney = this.intoMoney();
+      this.orderData.total_money = this.intoMoney();
       // dữ liệu hợp lệ, gọi service để đặt hàng
       this.orderService.placeOrder(this.orderData).subscribe({
         next:(response)=>{
           debugger;
-          console.log('Order placed:', response);
+          alert('Đặt hàng thành công');
+          this.cartService.clearCart();
+          this.router.navigate(['/orders/', response.id]);
         }, complete:()=>{
           debugger;
           this.calculateTotal();
         },error:(error:any)=>{
-          console.error('Error placing order:', error);
+          alert(`Đặt hàng thất bại. Lỗi ${error}`);
         },
       });
     }else{

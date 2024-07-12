@@ -6,11 +6,11 @@
     </div>
     <div class="detail-content">
         <div class="link-product">
-            <a class="link blur-text">dsadasd</a>
+            <a class="link blur-text" routerLink="/">trang chủ</a>
             <p class="link blur-text"> / </p>
-            <a class="link blur-text">dsadasd</a>
+            <a class="link blur-text">danh mục</a>
             <p class="link blur-text"> / </p>
-            <p class="link">Sản phẩm 1</p>
+            <p class="link">{{product?.name}}</p>
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -70,6 +70,9 @@
                             <p class="product-description">Màu sắc:</p>
                         </div>
                         <div class="col-md-10">
+                            <p class="product-description">Đỏ cam vàng lục lam chàm tím</p>
+                        </div>
+                        <!-- <div class="col-md-10">
                             <div class="color-container">
                                 <div>
                                     <i class="fa-solid fa-square boxcolor"
@@ -87,7 +90,7 @@
                                         (click)="selectColor('#411C8C')"></i>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="link-product">
                         <div class="col-md-2">

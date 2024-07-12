@@ -61,7 +61,7 @@
                 <h4 class="product-header mb-3">Tổng tiền:</h4>
                 <div class="container__checkout">
                     <span>Tổng tiền hàng:</span>
-                    <span>{{formatCurrency(123)}}</span>
+                    <span>{{formatCurrency(orderResponse.total_money)}}</span>
                     <span>Mã giảm giá:</span>
                     <span>ABCDEFGH</span>
                     <span>Phương thức vận chuyển:</span>
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="text-center mt-3">
-            <button class="btn btn-gradien" type="button">Tiếp tục mua sắm</button>
+            <button class="btn btn-gradien" type="button" (click)="continueShopping()">Tiếp tục mua sắm</button>
             <a href="#" style="font-size: 17px; font-weight: bold; color: red;">Hủy đơn hàng</a>
         </div>
     </div>
