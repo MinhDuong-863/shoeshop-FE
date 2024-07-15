@@ -15,12 +15,12 @@ import { AppComponent } from './components/app/app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './components/header/header.component'; // Import HeaderComponent here
 import { OrderDetailComponent } from './components/order-detail/order.detail.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     DetailProductComponent,
-    FooterComponent,
     LoginComponent,
     OrderComponent,
     OrderDetailComponent,
@@ -35,6 +35,8 @@ import { OrderDetailComponent } from './components/order-detail/order.detail.com
     FormsModule,
     HttpClientModule,
     NgbModule,
+    UserProfileComponent,
+    FooterComponent,
     HeaderComponent // Import HeaderComponent here
   ],
   providers: [

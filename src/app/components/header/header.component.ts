@@ -53,7 +53,6 @@ export class HeaderComponent implements OnInit{
     }
     this.isPopoverOpen = false; // Close the popover after clicking an item    
   }
-
   
   setActiveNavItem(index: number) {    
     this.activeNavItem = index;

@@ -4,7 +4,7 @@ import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { environment } from '../../environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { OrderDTO } from '../../dtos/user/order.dto';
+import { OrderDTO } from '../../dtos/order/order.dto'; 
 import { Validator } from 'class-validator';
 import { OrderService } from '../../services/order.service';
 import { TokenService } from '../../services/token.service';
