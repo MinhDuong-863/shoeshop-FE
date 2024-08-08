@@ -8,7 +8,7 @@ import {
   AbstractControl
 } from '@angular/forms';
 
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { TokenService } from '../../services/token.service';
 import { UserResponse } from '../../responses/user/user.response';
@@ -18,6 +18,7 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SidebarUserComponent } from '../sidebar-user/sidebar-user.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -29,7 +30,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     CommonModule,
     FormsModule, 
-    ReactiveFormsModule,   
+    ReactiveFormsModule,  
+    SidebarUserComponent,
+    RouterModule
   ],
 })
 export class UserProfileComponent implements OnInit {

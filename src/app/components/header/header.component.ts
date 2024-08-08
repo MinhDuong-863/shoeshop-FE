@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit{
     //alert(`Clicked on "${index}"`);
     if(index === 0) {
       debugger
-      this.router.navigate(['/user-profile']);                      
+      this.router.navigate(['/user-account/user-profile']);          
     } else if (index === 2) {
       this.userService.removeUserFromLocalStorage();
       this.tokenService.removeToken();

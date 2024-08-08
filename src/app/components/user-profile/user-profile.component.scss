@@ -1,0 +1,74 @@
+.container {
+    background-color: #F8F9FD;
+    padding: 1rem;
+}
+.profile-content{
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+.profile-header{
+    color: #0099ff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.375;
+}
+.form-label{
+    color: #2d3748;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+}
+.form-control{
+    color: #2d3748;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 550;
+    line-height: 1;
+
+    width: 100%;
+    padding: 10px 18px;
+    box-shadow: 0 0 0 1px #9f9f9f;
+    border: none;
+    border-radius: 20px;
+    background-color: #F4F7FC;
+}
+
+.button {
+    background-color: #4299e1;
+    white-space: nowrap;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.75rem;
+    /* Tailwind text-xs */
+    font-weight: bold;
+    text-transform: uppercase;
+    border: #ffffff;
+    border-radius: 2rem;
+    /* Tailwind rounded-lg */
+    box-shadow: 0 4px 6px rgba(66, 153, 225, 0.2);
+    /* Tailwind shadow-md */
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.button:hover {
+    box-shadow: 0 8px 10px rgba(66, 153, 225, 0.4);
+    /* Tailwind hover:shadow-lg */
+}
+
+.button:focus,
+.button:active {
+    opacity: 0.85;
+    box-shadow: none;
+}
+
+.button:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    box-shadow: none;
+}

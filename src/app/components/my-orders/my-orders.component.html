@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="myorders-content">
+    <h2 class="orders-header">Danh sách đơn hàng</h2>
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th scope="col">Mã đơn hàng</th>
+          <th scope="col">Tên khách hàng</th>
+          <th scope="col">Ngày đặt hàng</th>
+          <th scope="col">Ngày giao hàng</th>
+          <th scope="col">Tổng tiền (VNĐ)</th>
+          <th scope="col">Trạng thái</th>
+          <th scope="col">Chi tiết</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orderResponses">
+          <td>{{ order.id }}</td>
+          <td>{{ order.fullname }}</td>
+          <td>{{ formatDate(order.order_date) }}</td>
+          <td>{{ formatDate(order.shipping_date) }}</td>
+          <td>{{ formatCurrency(order.total_money) }}</td>
+          <td>{{ order.status }}</td>
+          <td>
+            <button (click)="viewOrderDetail(order.id)" class="btn btn-info">Xem chi tiết</button>
+          </td>
+        </tr>
+        <tr *ngFor="let order of orderResponses">
+          <td colspan="7">
+            <table class="order-details-table">
+              <thead>
+                <tr>
+                  <th>Sản phẩm</th>
+                  <th>Số lượng</th>
+                  <th>Đơn giá (VNĐ)</th>
+                  <th>Tổng tiền (VNĐ)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of order.order_details">
+                  <td>
+                    <div class="product-info">
+                      <img [src]="item.product.thumbnail"
+                           class="product-image" alt="">
+                      <div>
+                        <span class="product-name">{{ item.product.name }}</span>
+                        <span class="product-name product-name-opacity">Màu sắc: {{ item.color || 'N/A' }}</span>
+                        <span class="product-name product-name-opacity">Kích thước: </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ formatCurrency(item.price) }}</td>
+                  <td>{{ formatCurrency(item.total_money) }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

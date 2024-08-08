@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
 import { environment } from '../../environments/environment';
@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'] // Sửa lỗi từ styleUrl thành styleUrls
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   productResponses: Product[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 12;
@@ -25,7 +25,10 @@ export class HomeComponent implements OnInit {
 
   selectedCategoryId: number = 0;
   keyword: string = '';
-  searchInput: string = ''
+  searchInput: string = '';
+
+  slideIndex: number = 1;
+  slideInterval: any;
 
   constructor(
     private productService: ProductService,
@@ -35,33 +38,41 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts(this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage);
-
     this.getCategories();
   }
-  getCategories(){
+
+  ngAfterViewInit() {
+    this.showSlides(this.slideIndex);
+    this.slideInterval = setInterval(() => this.plusSlides(1), 3000); // Change slide every 3 seconds
+  }
+
+  ngOnDestroy() {
+    if (this.slideInterval) {
+      clearInterval(this.slideInterval);
+    }
+  }
+
+  getCategories() {
     this.categoryService.getCategories().subscribe({
       next: (categories: Category[]) => {
-        debugger
         this.categories = categories;
       },
       error: (error: any) => {
-        debugger
-        console.error('Error getting : ', error);
+        console.error('Error getting categories:', error);
       }
     });
   }
+
   searchProduct() {
     this.currentPage = 1;
     this.itemsPerPage = 12;
     this.keyword = this.keyword.trim();
-    debugger
-    this.getProducts(this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage)
+    this.getProducts(this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage);
   }
 
   getProducts(keyword: string, selectedCategoryId: number, page: number, limit: number) {
     this.productService.getProducts(keyword, selectedCategoryId, page, limit).subscribe({
       next: (response: any) => {
-        debugger
         response.productResponses.forEach((product: Product) => {
           product.url = `${environment.apiBaseUrl}/products/images/${product.thumbnail}`;
           product.formattedPrice = this.formatCurrency(product.price);
@@ -103,4 +114,33 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/products', productId]);
   }
 
+  // Slideshow methods
+  plusSlides(n: number) {
+    this.showSlides(this.slideIndex += n);
+  }
+
+  currentSlide(n: number) {
+    this.showSlides(this.slideIndex = n);
+  }
+
+  showSlides(n: number) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides") as HTMLCollectionOf<HTMLElement>;
+    let dots = document.getElementsByClassName("dot") as HTMLCollectionOf<HTMLElement>;
+
+    if (n > slides.length) { this.slideIndex = 1; }
+    if (n < 1) { this.slideIndex = slides.length; }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+      slides[i].classList.remove("active");
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" activedot", "");
+    }
+    if (slides[this.slideIndex - 1]) {
+      slides[this.slideIndex - 1].style.display = "block";
+      slides[this.slideIndex - 1].classList.add("active");
+      dots[this.slideIndex - 1].className += " activedot";
+    }
+  }
 }

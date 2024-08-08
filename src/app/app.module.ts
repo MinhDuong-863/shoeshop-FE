@@ -16,6 +16,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './components/header/header.component'; // Import HeaderComponent here
 import { OrderDetailComponent } from './components/order-detail/order.detail.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { SidebarUserComponent } from './components/sidebar-user/sidebar-user.component';
+import { RouterModule } from '@angular/router';
+import { UserAccountComponent } from './components/user-account/user-account.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     OrderDetailComponent,
     RegisterComponent,
     AppComponent,
+    UserAccountComponent,
+    MyOrdersComponent,
     // Remove HeaderComponent from declarations as it's standalone
   ],
   imports: [
@@ -37,7 +43,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     NgbModule,
     UserProfileComponent,
     FooterComponent,
-    HeaderComponent // Import HeaderComponent here
+    HeaderComponent, // Import HeaderComponent here
+    RouterModule,
+    SidebarUserComponent,
   ],
   providers: [
     {

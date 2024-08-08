@@ -1,0 +1,71 @@
+.sidebar {
+  margin-top: 70px;
+  height: 85%;
+  width: 250px;
+  /* Chiều rộng của menu trái */
+  position: fixed;
+  /* Đặt menu cố định ở bên trái */
+  top: 0;
+  left: 0;
+  background-color: #333;
+  /* Màu nền của menu */
+  color: #F8F9F5;
+  /* Màu chữ của menu */
+  padding-top: 20px;
+  border-radius: 0px 25px 25px 0px;
+  background: #6FB1E8;
+  box-shadow:  24px 24px 52px #c3c3c3,
+             -24px -24px 52px #fdfdfd;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  /* Loại bỏ dấu chấm đầu mục */
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+}
+
+/* Cấu hình liên kết */
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  border-radius: 1000px;
+  padding: 5px;
+  transition: all 0.3s; /* Thêm hiệu ứng chuyển tiếp */
+}
+
+/* Cấu hình liên kết khi được kích hoạt (active) */
+.sidebar a.active {
+  background-color: #fff;
+  color: #1090D3;
+  font-weight: bold;
+}
+
+/* Cấu hình hiệu ứng khi hover */
+.sidebar a:hover {
+  font-weight: bold;
+  text-shadow: 0 3px 0 #1090D3;
+}
+
+/* Cấu hình liên kết khi được nhấp (active) */
+.sidebar a:active {
+  background-color: white;
+  color: #1090D3;
+}
+
+/* Khi liên kết đang ở trạng thái active, loại bỏ hiệu ứng hover */
+.sidebar a.active:hover {
+  background-color: #fff; /* Giữ màu nền khi active */
+  color: #1090D3; /* Giữ màu chữ khi active */
+  text-shadow: none; /* Loại bỏ gạch chân hiệu ứng hover */
+  cursor: pointer; /* Thay đổi con trỏ chuột */
+}

@@ -72,13 +72,13 @@ export class OrderDetailComponent implements OnInit {
     });
   }
 
-  formatCurrency(amount: number): string {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-  }
+    formatCurrency(amount: number): string {
+      return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+    }
 
-  formatDate(date: Date): string {
-    return date.toLocaleDateString('vi-VN');
-  }
+    formatDate(date: Date): string {
+      return date.toLocaleDateString('vi-VN');
+    }
 
   continueShopping(): void {
     this.router.navigate(['/']);
